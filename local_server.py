@@ -27,15 +27,3 @@ def current_datetime(timezone: str = 'America/New_York') -> str:
         return now.strftime("%Y-%m-%d %H:%M:%S %Z")
     except pytz.exceptions.UnknownTimeZoneError:
         return f"Unknown timezone '{timezone}'. Please use a valid timezone name."
-
-if __name__ == '__main__':
-    import asyncio
-
-    port = int(os.environ.get("PORT", 8000))
-    asyncio.run(
-        mcp.run_sse_async(
-            host="0.0.0.0",
-            port=port,
-            log_level="debug"
-        )
-    )
